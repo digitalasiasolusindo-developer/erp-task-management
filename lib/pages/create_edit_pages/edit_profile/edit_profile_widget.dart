@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/components/u_i_components/change_photo/change_photo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -28,8 +27,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
-    _model.yourNameController ??=
-        TextEditingController(text: currentUserDisplayName);
+    _model.yourNameController ??= TextEditingController();
     _model.titleRoleController ??= TextEditingController();
     _model.myBioController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -116,7 +114,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               shape: BoxShape.circle,
                             ),
                             child: CachedNetworkImage(
-                              imageUrl: currentUserPhoto,
+                              imageUrl:
+                                  'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
                               fit: BoxFit.fitWidth,
                             ),
                           ),
@@ -340,7 +339,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(32.0, 4.0, 0.0, 12.0),
                   child: SelectionArea(
                       child: Text(
-                    currentUserEmail,
+                    FFLocalizations.of(context).getText(
+                      '5k8grglp' /* Email associated with this acc... */,
+                    ),
                     style: FlutterFlowTheme.of(context).headlineSmall,
                   )),
                 ),

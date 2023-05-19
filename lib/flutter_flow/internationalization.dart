@@ -1377,6 +1377,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // myProfile
   {
+    'avzn93dq': {
+      'en': '[User Name Here]',
+      'hi': '',
+      'id': '',
+      'ta': '',
+      'ur': '',
+    },
+    'ruy6swxw': {
+      'en': 'User.name@domainname.com',
+      'hi': '',
+      'id': '',
+      'ta': '',
+      'ur': '',
+    },
     '5n51xmhd': {
       'en': 'Switch to Dark Mode',
       'hi': 'डार्क मोड पर स्विच करें',
@@ -1830,6 +1844,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'இந்தக் கணக்குடன் தொடர்புடைய மின்னஞ்சல்:',
       'ur': 'اس اکاؤنٹ سے وابستہ ای میل:',
     },
+    '5k8grglp': {
+      'en': 'Email associated with this account:',
+      'hi': '',
+      'id': '',
+      'ta': '',
+      'ur': '',
+    },
     '4cj4t3x4': {
       'en': 'Save Changes',
       'hi': 'परिवर्तनों को सुरक्षित करें',
@@ -2077,6 +2098,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'காண்க',
       'ur': 'دیکھیں',
     },
+    '08ydiahv': {
+      'en': 'userName',
+      'hi': '',
+      'id': '',
+      'ta': '',
+      'ur': '',
+    },
+    'h6w8fg89': {
+      'en': 'email@address.com',
+      'hi': '',
+      'id': '',
+      'ta': '',
+      'ur': '',
+    },
     '1281zly2': {
       'en': '345',
       'hi': '345',
@@ -2280,6 +2315,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'உங்கள் குழுவை லூப்பில் வைத்திருக்க ஒரு குறிப்பை உருவாக்கவும்.',
       'ur': 'اپنی ٹیم کو لوپ میں رکھنے کے لیے ایک نوٹ بنائیں۔',
     },
+    'b51skjsj': {
+      'en': 'Hello World',
+      'hi': '',
+      'id': '',
+      'ta': '',
+      'ur': '',
+    },
     'sq20csss': {
       'en': 'Enter your note here...',
       'hi': 'अपना नोट यहां दर्ज करें...',
@@ -2365,6 +2407,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rqnlfjsw': {
       'en': 'Team Members',
+      'hi': '',
+      'id': '',
+      'ta': '',
+      'ur': '',
+    },
+    'gs2ucmvi': {
+      'en': 'Andrew D.',
       'hi': '',
       'id': '',
       'ta': '',

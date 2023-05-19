@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/components/u_i_components/change_photo/change_photo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

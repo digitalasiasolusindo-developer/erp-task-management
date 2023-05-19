@@ -5,8 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 
-import '../../auth/base_auth_user_provider.dart';
-
 import '../../index.dart';
 import '../../main.dart';
 import '../lat_lng.dart';
@@ -19,43 +17,7 @@ export 'serialization_util.dart';
 const kTransitionInfoKey = '__transition_info__';
 
 class AppStateNotifier extends ChangeNotifier {
-  BaseAuthUser? initialUser;
-  BaseAuthUser? user;
   bool showSplashImage = true;
-  String? _redirectLocation;
-
-  /// Determines whether the app will refresh and build again when a sign
-  /// in or sign out happens. This is useful when the app is launched or
-  /// on an unexpected logout. However, this must be turned off when we
-  /// intend to sign in/out and then navigate or perform any actions after.
-  /// Otherwise, this will trigger a refresh and interrupt the action(s).
-  bool notifyOnAuthChange = true;
-
-  bool get loading => user == null || showSplashImage;
-  bool get loggedIn => user?.loggedIn ?? false;
-  bool get initiallyLoggedIn => initialUser?.loggedIn ?? false;
-  bool get shouldRedirect => loggedIn && _redirectLocation != null;
-
-  String getRedirectLocation() => _redirectLocation!;
-  bool hasRedirect() => _redirectLocation != null;
-  void setRedirectLocationIfUnset(String loc) => _redirectLocation ??= loc;
-  void clearRedirectLocation() => _redirectLocation = null;
-
-  /// Mark as not needing to notify on a sign in / out when we intend
-  /// to perform subsequent actions (such as navigation) afterwards.
-  void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
-
-  void update(BaseAuthUser newUser) {
-    initialUser ??= newUser;
-    user = newUser;
-    // Refresh the app on auth change unless explicitly marked otherwise.
-    if (notifyOnAuthChange) {
-      notifyListeners();
-    }
-    // Once again mark the notifier as needing to update on auth change
-    // (in order to catch sign in / out events).
-    updateNotifyOnAuthChange(true);
-  }
 
   void stopShowingSplashImage() {
     showSplashImage = false;
@@ -67,14 +29,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+      errorBuilder: (context, _) => appStateNotifier.showSplashImage
+          ? Builder(
+              builder: (context) => Container(
+                color: FlutterFlowTheme.of(context).primary,
+                child: Image.asset(
+                  'assets/images/splash_app_Tracker@2x.png',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            )
+          : NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+          builder: (context, _) => appStateNotifier.showSplashImage
+              ? Builder(
+                  builder: (context) => Container(
+                    color: FlutterFlowTheme.of(context).primary,
+                    child: Image.asset(
+                      'assets/images/splash_app_Tracker@2x.png',
+                      fit: BoxFit.fitHeight,
+                    ),
+                  ),
+                )
+              : NavBarPage(),
           routes: [
             FFRoute(
               name: 'login',
@@ -89,13 +69,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'createProfile',
               path: 'createProfile',
-              requireAuth: true,
               builder: (context, params) => CreateProfileWidget(),
             ),
             FFRoute(
               name: 'Main_tracker',
               path: 'mainTracker',
-              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Main_tracker')
                   : MainTrackerWidget(),
@@ -103,13 +81,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'createTask_1_SelectProject',
               path: 'createTask1SelectProject',
-              requireAuth: true,
               builder: (context, params) => CreateTask1SelectProjectWidget(),
             ),
             FFRoute(
               name: 'createTask',
               path: 'createTask',
-              requireAuth: true,
               builder: (context, params) => CreateTaskWidget(
                 project: params.getParam('project', ParamType.JSON),
               ),
@@ -117,7 +93,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'taskDetails',
               path: 'taskDetails',
-              requireAuth: true,
               builder: (context, params) => TaskDetailsWidget(
                 project: params.getParam('project', ParamType.JSON),
                 task: params.getParam('task', ParamType.JSON),
@@ -126,19 +101,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'addTeamMembers',
               path: 'addTeamMembers',
-              requireAuth: true,
               builder: (context, params) => AddTeamMembersWidget(),
             ),
             FFRoute(
               name: 'teamMemberDetails',
               path: 'teamMemberDetails',
-              requireAuth: true,
               builder: (context, params) => TeamMemberDetailsWidget(),
             ),
             FFRoute(
               name: 'Main_projectsWeb',
               path: 'mainProjectsWeb',
-              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Main_projectsWeb')
                   : MainProjectsWebWidget(),
@@ -146,7 +118,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Main_teamPage',
               path: 'mainTeamPage',
-              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Main_teamPage')
                   : MainTeamPageWidget(),
@@ -159,7 +130,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'myProfile',
               path: 'myProfile',
-              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'myProfile')
                   : MyProfileWidget(),
@@ -167,13 +137,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'createProject',
               path: 'createProject',
-              requireAuth: true,
               builder: (context, params) => CreateProjectWidget(),
             ),
             FFRoute(
               name: 'projectDetailsPage',
               path: 'projectDetailsPage',
-              requireAuth: true,
               builder: (context, params) => ProjectDetailsPageWidget(
                 project: params.getParam('project', ParamType.JSON),
               ),
@@ -181,7 +149,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'searchMembers',
               path: 'searchMembers',
-              requireAuth: true,
               builder: (context, params) => SearchMembersWidget(
                 project: params.getParam('project', ParamType.JSON),
               ),
@@ -189,13 +156,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'editProfile',
               path: 'editProfile',
-              requireAuth: true,
               builder: (context, params) => EditProfileWidget(),
             ),
             FFRoute(
               name: 'teamMembers',
               path: 'teamMembers',
-              requireAuth: true,
               builder: (context, params) => TeamMembersWidget(
                 project: params.getParam('project', ParamType.JSON),
               ),
@@ -203,7 +168,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'editProject',
               path: 'editProject',
-              requireAuth: true,
               builder: (context, params) => EditProjectWidget(
                 project: params.getParam('project', ParamType.JSON),
               ),
@@ -223,40 +187,6 @@ extension NavParamExtensions on Map<String, String?> {
 }
 
 extension NavigationExtensions on BuildContext {
-  void goNamedAuth(
-    String name,
-    bool mounted, {
-    Map<String, String> params = const <String, String>{},
-    Map<String, String> queryParams = const <String, String>{},
-    Object? extra,
-    bool ignoreRedirect = false,
-  }) =>
-      !mounted || GoRouter.of(this).shouldRedirect(ignoreRedirect)
-          ? null
-          : goNamed(
-              name,
-              params: params,
-              queryParams: queryParams,
-              extra: extra,
-            );
-
-  void pushNamedAuth(
-    String name,
-    bool mounted, {
-    Map<String, String> params = const <String, String>{},
-    Map<String, String> queryParams = const <String, String>{},
-    Object? extra,
-    bool ignoreRedirect = false,
-  }) =>
-      !mounted || GoRouter.of(this).shouldRedirect(ignoreRedirect)
-          ? null
-          : pushNamed(
-              name,
-              params: params,
-              queryParams: queryParams,
-              extra: extra,
-            );
-
   void safePop() {
     // If there is only one route on the stack, navigate to the initial
     // page instead of popping.
@@ -266,21 +196,6 @@ extension NavigationExtensions on BuildContext {
       pop();
     }
   }
-}
-
-extension GoRouterExtensions on GoRouter {
-  AppStateNotifier get appState =>
-      (routerDelegate.refreshListenable as AppStateNotifier);
-  void prepareAuthEvent([bool ignoreRedirect = false]) =>
-      appState.hasRedirect() && !ignoreRedirect
-          ? null
-          : appState.updateNotifyOnAuthChange(false);
-  bool shouldRedirect(bool ignoreRedirect) =>
-      !ignoreRedirect && appState.hasRedirect();
-  void clearRedirectLocation() => appState.clearRedirectLocation();
-  void setRedirectLocationIfUnset(String location) =>
-      (routerDelegate.refreshListenable as AppStateNotifier)
-          .updateNotifyOnAuthChange(false);
 }
 
 extension _GoRouterStateExtensions on GoRouterState {
@@ -371,19 +286,6 @@ class FFRoute {
   GoRoute toRoute(AppStateNotifier appStateNotifier) => GoRoute(
         name: name,
         path: path,
-        redirect: (state) {
-          if (appStateNotifier.shouldRedirect) {
-            final redirectLocation = appStateNotifier.getRedirectLocation();
-            appStateNotifier.clearRedirectLocation();
-            return redirectLocation;
-          }
-
-          if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/login';
-          }
-          return null;
-        },
         pageBuilder: (context, state) {
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
@@ -392,15 +294,7 @@ class FFRoute {
                   builder: (context, _) => builder(context, ffParams),
                 )
               : builder(context, ffParams);
-          final child = appStateNotifier.loading
-              ? Container(
-                  color: FlutterFlowTheme.of(context).primary,
-                  child: Image.asset(
-                    'assets/images/splash_app_Tracker@2x.png',
-                    fit: BoxFit.fitHeight,
-                  ),
-                )
-              : page;
+          final child = page;
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

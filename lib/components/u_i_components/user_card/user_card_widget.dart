@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +60,7 @@ class _UserCardWidgetState extends State<UserCardWidget> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(40.0),
             child: Image.network(
-              currentUserPhoto,
+              'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
               width: 40.0,
               height: 40.0,
               fit: BoxFit.cover,

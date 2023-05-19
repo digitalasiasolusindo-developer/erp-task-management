@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -442,7 +441,7 @@ class _WebNavWidgetState extends State<WebNavWidget> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(50.0),
                                   child: Image.network(
-                                    currentUserPhoto,
+                                    'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
                                     width: 44.0,
                                     height: 44.0,
                                     fit: BoxFit.cover,
@@ -459,7 +458,9 @@ class _WebNavWidgetState extends State<WebNavWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      currentUserDisplayName,
+                                      FFLocalizations.of(context).getText(
+                                        'gs2ucmvi' /* Andrew D. */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),

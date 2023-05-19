@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/components/u_i_components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -192,10 +191,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: CachedNetworkImage(
-                                            imageUrl: valueOrDefault<String>(
-                                              currentUserPhoto,
-                                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/workout-design-system-0fvecj/assets/sgiftpqezy3r/addAvatarImage@2x.png',
-                                            ),
+                                            imageUrl: '',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -214,7 +210,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 0.0),
                                               child: Text(
-                                                currentUserDisplayName,
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'avzn93dq' /* [User Name Here] */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineSmall,
@@ -224,7 +223,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
-                                                currentUserEmail,
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'ruy6swxw' /* User.name@domainname.com */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall

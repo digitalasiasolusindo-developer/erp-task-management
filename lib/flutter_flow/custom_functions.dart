@@ -7,7 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
-import '/auth/firebase_auth/auth_util.dart';
 
 double progressBarValue(
   int? totalNumber,

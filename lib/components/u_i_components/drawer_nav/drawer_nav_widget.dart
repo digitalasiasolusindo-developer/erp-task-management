@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -78,7 +77,7 @@ class _DrawerNavWidgetState extends State<DrawerNavWidget> {
                           shape: BoxShape.circle,
                         ),
                         child: Image.network(
-                          currentUserPhoto,
+                          'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -130,7 +129,9 @@ class _DrawerNavWidgetState extends State<DrawerNavWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          currentUserDisplayName,
+                          FFLocalizations.of(context).getText(
+                            '08ydiahv' /* userName */,
+                          ),
                           style: FlutterFlowTheme.of(context).headlineSmall,
                         ),
                       ],
@@ -139,7 +140,9 @@ class _DrawerNavWidgetState extends State<DrawerNavWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
-                        currentUserEmail,
+                        FFLocalizations.of(context).getText(
+                          'h6w8fg89' /* email@address.com */,
+                        ),
                         style: FlutterFlowTheme.of(context).bodySmall.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodySmallFamily,
