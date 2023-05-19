@@ -401,12 +401,6 @@ class _DrawerNavWidgetState extends State<DrawerNavWidget> {
                       Scaffold.of(context).isEndDrawerOpen) {
                     Navigator.pop(context);
                   }
-
-                  GoRouter.of(context).prepareAuthEvent();
-                  await authManager.signOut();
-                  GoRouter.of(context).clearRedirectLocation();
-
-                  context.goNamedAuth('login', context.mounted);
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
