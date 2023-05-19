@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "195279828603",
+    "project_id": "task-management-ea78e",
+    "storage_bucket": "task-management-ea78e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195279828603:android:c834d3727c8a217a2bd4de",
+        "android_client_info": {
+          "package_name": "com.das.erpprojecttracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195279828603-82badpcq1rrvisg0hoj7fv0g6hh0soe7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.das.erpprojecttracker",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "195279828603-lb5c9075e7c2boli0qs3rhqhjg12v54d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoOlAzHEjV78gAFzSEd7B6xxFbQZ1jQMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195279828603-lb5c9075e7c2boli0qs3rhqhjg12v54d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "195279828603-tshvdpjlqcttoa1cmnk34iibs0av725k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.das.erpprojecttracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
