@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>195279828603-tshvdpjlqcttoa1cmnk34iibs0av725k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.195279828603-tshvdpjlqcttoa1cmnk34iibs0av725k</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>195279828603-82badpcq1rrvisg0hoj7fv0g6hh0soe7.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCbkMYxtRFrhej7nbUHHyAHrwZvNE1NYHE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>195279828603</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.das.erpprojecttracker</string>
+	<key>PROJECT_ID</key>
+	<string>task-management-ea78e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>task-management-ea78e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:195279828603:ios:a0f37dd8d0705eba2bd4de</string>
+</dict>
+</plist>
